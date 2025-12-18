@@ -1,0 +1,87 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# ===============================
+# Android / Gradle
+# ===============================
+*.apk
+*.aab
+*.aar
+*.ap_
+*.dex
+*.class
+
+/build/
+/app/build/
+
+.gradle/
+gradle-app.setting
+
+# ===============================
+# Local configuration
+# ===============================
+local.properties
+
+# ===============================
+# Android Studio / IntelliJ
+# ===============================
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Navigation editor temp files
+.navigation/
+
+# Android Studio captures
+captures/
+
+# ===============================
+# Firebase
+# ===============================
+# ❌ NEVER commit this
+app/google-services.json
+
+# ===============================
+# Kotlin / Java
+# ===============================
+*.log
+*.tmp
+
+# ===============================
+# OS files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# NDK / CMake
+# ===============================
+.externalNativeBuild/
+.cxx/
+
+# ===============================
+# Testing
+# ===============================
+out/
+
+# ===============================
+# Misc
+# ===============================
+*.swp
+*.swo
+*.bak
+*.orig
