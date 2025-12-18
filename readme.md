@@ -190,21 +190,12 @@ Composite indexes were created for:
 
 ---
 
-## Screenshots
-
-```
-/screenshots/login.png
-/screenshots/dashboard.png
-/screenshots/transactions.png
-/screenshots/categories.png
-/screenshots/chart.png
-```
-
----
-
 ## Demo Video
 
-* **YouTube (Unlisted): **
+[Link to Demo](https://youtu.be/KdIYxMcWRqo)
+
+Click the link to watch the app in action.
+
 * Demo includes:
     * Authentication flow
     * Persistent login
