@@ -6,6 +6,8 @@ Expense Tracker is a modern Android application built using **Jetpack Compose** 
 
 The app demonstrates **clean architecture (MVVM)**, **Firebase Authentication**, **Firestore real-time persistence**, and **Material Design 3 UI**.
 
+Anish Ummenthala - 866515844
+
 ---
 
 ## Tech Stack
