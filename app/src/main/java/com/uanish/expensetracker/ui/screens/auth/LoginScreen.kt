@@ -1,12 +1,19 @@
 package com.uanish.expensetracker.ui.screens.auth
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.uanish.expensetracker.util.Validators
 import com.uanish.expensetracker.viewmodel.AuthState
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.ui.text.input.VisualTransformation
 
 @Composable
 fun LoginScreen(
@@ -44,15 +51,32 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxWidth()
             )
 
+            var passwordVisible by remember { mutableStateOf(false) }
+
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
                 label = { Text("Password") },
-                isError = pwError != null && password.isNotBlank(),
-                supportingText = { if (pwError != null && password.isNotBlank()) Text(pwError) },
-                singleLine = true,
+                visualTransformation = if (passwordVisible)
+                    VisualTransformation.None
+                else
+                    PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                trailingIcon = {
+                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                        Icon(
+                            imageVector = if (passwordVisible)
+                                Icons.Default.VisibilityOff
+                            else
+                                Icons.Default.Visibility,
+                            contentDescription = "Toggle password visibility"
+                        )
+                    }
+                },
                 modifier = Modifier.fillMaxWidth()
             )
+
+
 
             if (errorMessage != null) {
                 Text(errorMessage, color = MaterialTheme.colorScheme.error)

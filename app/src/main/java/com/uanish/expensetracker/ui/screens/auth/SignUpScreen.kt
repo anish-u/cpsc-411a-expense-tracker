@@ -1,9 +1,16 @@
 package com.uanish.expensetracker.ui.screens.auth
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.uanish.expensetracker.util.Validators
 import com.uanish.expensetracker.viewmodel.AuthState
@@ -64,6 +71,8 @@ fun SignUpScreen(
                 modifier = Modifier.fillMaxWidth()
             )
 
+            var passwordVisible by remember { mutableStateOf(false) }
+
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
@@ -73,9 +82,26 @@ fun SignUpScreen(
                     if (pwError != null && password.isNotBlank()) Text(pwError)
                     else Text("Minimum 6 characters")
                 },
-                singleLine = true,
+                visualTransformation = if (passwordVisible)
+                    VisualTransformation.None
+                else
+                    PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                trailingIcon = {
+                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                        Icon(
+                            imageVector = if (passwordVisible)
+                                Icons.Default.VisibilityOff
+                            else
+                                Icons.Default.Visibility,
+                            contentDescription = "Toggle password visibility"
+                        )
+                    }
+                },
                 modifier = Modifier.fillMaxWidth()
             )
+
+            var confirmPasswordVisible by remember { mutableStateOf(false) }
 
             OutlinedTextField(
                 value = confirmPassword,
@@ -83,7 +109,22 @@ fun SignUpScreen(
                 label = { Text("Confirm Password") },
                 isError = confirmError != null && confirmPassword.isNotBlank(),
                 supportingText = { if (confirmError != null && confirmPassword.isNotBlank()) Text(confirmError) },
-                singleLine = true,
+                visualTransformation = if (confirmPasswordVisible)
+                    VisualTransformation.None
+                else
+                    PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                trailingIcon = {
+                    IconButton(onClick = { confirmPasswordVisible = !confirmPasswordVisible }) {
+                        Icon(
+                            imageVector = if (confirmPasswordVisible)
+                                Icons.Default.VisibilityOff
+                            else
+                                Icons.Default.Visibility,
+                            contentDescription = "Toggle password visibility"
+                        )
+                    }
+                },
                 modifier = Modifier.fillMaxWidth()
             )
 
